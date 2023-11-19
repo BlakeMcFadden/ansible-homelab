@@ -14,7 +14,7 @@
   remote_user: debian
   become: yes
 
-- name: Ansible playbook for configuring docker
+- name: Ansible playbook for configuring panel docker compose
   hosts: panel
   roles:
     - docker
