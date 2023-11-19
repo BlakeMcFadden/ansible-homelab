@@ -1,0 +1,37 @@
+- name: create directory to house our docker-compose
+  file: 
+    path: /home/debian/panel/ 
+    state: directory
+    owner: debian
+    group: debian
+  tags: panel
+
+- name: copy docker-compose.yml
+  copy: 
+    src: templates/docker.conf.j2 
+    dest: /home/debian/panel/docker-compose.yml
+    owner: debian
+    group: debian
+  tags: panel
+
+- name: create docker_data directory
+  file: 
+    path: /home/debian/panel/docker_data/ 
+    state: directory
+    owner: debian
+    group: debian
+  tags: panel
+
+- name: copy supporting files
+  copy: 
+    src: roles/panel/templates/docker_data/ 
+    dest: /home/debian/panel/docker_data/
+    owner: debian
+    group: debian
+  tags: panel
+
+- name: Run docker-compose
+  docker_compose:
+    project_src: /home/debian/panel/
+    build: no
+  tags: panel
