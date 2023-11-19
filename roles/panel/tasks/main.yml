@@ -35,3 +35,7 @@
     project_src: /home/debian/panel/
     build: no
   tags: panel
+
+- name: Create User on Panel
+  ansible.builtin.shell: docker-compose run --rm panel php artisan p:user:make --email=user@example.com --username=blake --name-first=blake --name-last=Name --password={{panel_pass}} --admin=1
+  tags: panel
