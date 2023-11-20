@@ -21,3 +21,21 @@
     - panel
   remote_user: debian
   become: yes
+
+- name: Ansible Playbook for configuring homepage docker compose
+  hosts: homepage
+  roles:
+   - docker
+   - homepage
+  remote_user: debian
+  become: yes
+
+- name: Ansible Playbook for configuring wings docker compose
+  hosts: wings
+  roles:
+   - docker
+   - wings
+  remote_user: debian
+  become: yes
+  
+   
